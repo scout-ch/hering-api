@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_multilang_mutlilanguage_rich_texts",
+  "info": {
+    "name": "Mutlilanguage Rich Text",
+    "icon": "chess-queen"
+  },
+  "options": {},
+  "attributes": {
+    "DE": {
+      "type": "richtext"
+    },
+    "FR": {
+      "type": "richtext"
+    },
+    "IT": {
+      "type": "richtext"
+    }
+  }
+}

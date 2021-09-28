@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_multilang_multi_languages",
+  "info": {
+    "name": "MultiLanguage",
+    "icon": "comment-medical"
+  },
+  "options": {},
+  "attributes": {
+    "DE": {
+      "type": "string"
+    },
+    "FR": {
+      "type": "string"
+    },
+    "IT": {
+      "type": "string"
+    }
+  }
+}
