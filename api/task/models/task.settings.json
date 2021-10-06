@@ -32,7 +32,7 @@
         }
       }
     },
-    "Verantwortlich": {
+    "responsible": {
       "type": "component",
       "repeatable": true,
       "component": "rollen.auswahl",
