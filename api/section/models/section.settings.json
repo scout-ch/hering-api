@@ -44,6 +44,15 @@
       },
       "type": "string",
       "required": true
+    },
+    "sorting": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "integer",
+      "required": true
     }
   }
 }

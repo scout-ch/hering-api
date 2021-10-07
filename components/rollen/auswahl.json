@@ -7,7 +7,7 @@
   },
   "options": {},
   "attributes": {
-    "label": {
+    "rolle": {
       "type": "enumeration",
       "enum": [
         "LL",
