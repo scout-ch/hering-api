@@ -5,4 +5,13 @@
  * to customize this service
  */
 
-module.exports = {};
+ module.exports = {
+  /**
+   * Promise to fetch all records
+   *
+   * @return {Promise}
+   */
+  find(params, _populate) {
+    return strapi.query('task').find(params, ['chapters', 'chapters.section.slug']);
+  },
+};

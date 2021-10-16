@@ -22,7 +22,9 @@
           "localized": true
         }
       },
-      "type": "string"
+      "type": "string",
+      "unique": true,
+      "required": true
     },
     "content": {
       "pluginOptions": {
@@ -30,7 +32,8 @@
           "localized": true
         }
       },
-      "type": "richtext"
+      "type": "richtext",
+      "required": true
     },
     "section": {
       "via": "chapters",
@@ -46,10 +49,10 @@
       },
       "component": "rollen.auswahl"
     },
-    "key": {
+    "slug": {
       "pluginOptions": {
         "i18n": {
-          "localized": false
+          "localized": true
         }
       },
       "type": "string",
@@ -64,6 +67,11 @@
       "type": "integer",
       "required": true,
       "unique": false
+    },
+    "tasks": {
+      "via": "chapters",
+      "collection": "task",
+      "dominant": true
     }
   }
 }
