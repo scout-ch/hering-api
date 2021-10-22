@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/calendar-page",
+      "handler": "calendar-page.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/calendar-page",
+      "handler": "calendar-page.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/calendar-page",
+      "handler": "calendar-page.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
