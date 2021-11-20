@@ -33,7 +33,7 @@
         }
       },
       "type": "richtext",
-      "required": true
+      "required": false
     },
     "chapters": {
       "via": "section",
@@ -66,6 +66,20 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "icon": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     }
   }
 }

@@ -72,6 +72,24 @@
       "via": "chapters",
       "collection": "task",
       "dominant": true
+    },
+    "link": {
+      "via": "chapter",
+      "model": "links"
+    },
+    "icon": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     }
   }
 }
