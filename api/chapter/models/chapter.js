@@ -10,13 +10,27 @@
  module.exports = {
    lifecycles: {
      beforeCreate: async (data) => {
-       if (data.title) {
-         data.slug = slugify(data.title);
-       }
+      if (data.title) {
+        const sectionId = data.section
+        const section = await strapi.services.section.findOne({id: sectionId});
+        if (section) {
+          data.slug = slugify(data.title);
+          data.slug_with_section = section.slug + '#' + slugify(data.title);
+        } else {
+          data.slug = slugify(data.title);
+        }
+      }
      },
      beforeUpdate: async (params, data) => {
        if (data.title) {
-         data.slug = slugify(data.title);
+         const sectionId = data.section
+         const section = await strapi.services.section.findOne({id: sectionId});
+         if (section) {
+           data.slug = slugify(data.title);
+           data.slug_with_section = section.slug + '#' + slugify(data.title);
+         } else {
+           data.slug = slugify(data.title);
+         }
        }  
      },
    },
