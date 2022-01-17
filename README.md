@@ -1,6 +1,6 @@
 # Headless CMS for the Hering App
 
-done with strapi
+done with strapi: https://strapi.io/
 
 ## Available Scripts
 
@@ -24,7 +24,9 @@ multi
 
 - links
 - sections
+  => auto generate slugs
 - chapters
+  => auto generate slugs
 - task
 
 ## heroku
