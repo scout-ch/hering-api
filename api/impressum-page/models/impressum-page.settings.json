@@ -1,8 +1,8 @@
 {
   "kind": "singleType",
-  "collectionName": "calendar_page",
+  "collectionName": "impressum_pages",
   "info": {
-    "name": "CalendarPage",
+    "name": "ImpressumPage",
     "description": ""
   },
   "options": {
