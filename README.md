@@ -50,7 +50,7 @@ relations:
 
 **Tasks**:
 - title: string
-- days: number (amount of days from the camp -/+)
+- days: number (amount of days from the camp -/+) (-1000 means the beginning of the year)
 - responsible: Rolle[] (one of: AL, LL, C)
 - targets: string[] (the person/institution that receives the task)
 - slug: string
