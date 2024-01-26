@@ -23,9 +23,10 @@ module.exports = {
       chapters.sort(sortBySorting)
 
       entity['chapters'] = chapters
+      entity['created_by'] = null
+      entity['updated_by'] = null
       return  entity
     }
     )
   },
 };
-

@@ -7,8 +7,12 @@
   },
   "options": {
     "increments": true,
-    "timestamps": true,
-    "draftAndPublish": true
+    "timestamps": false,
+    "draftAndPublish": true,
+    "privateAttributes": [
+      "created_by",
+      "updated_by"
+    ]
   },
   "pluginOptions": {
     "i18n": {
