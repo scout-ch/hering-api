@@ -75,6 +75,7 @@ jobs:
 
   build-and-push:
     runs-on: ubuntu-latest
+    needs: create-release
 
     steps:
       - name: Show selected ref
@@ -96,7 +97,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ github.token }}
 
       - name: Docker meta
         id: meta
@@ -104,9 +105,7 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}
           tags: |
-            type=raw,value=2.0.0-beta-${{ github.run_number }}
-            type=raw,value=${{ github.ref_name }}        # branch
-            type=sha,format=long                         # sha-<commit>
+            type=raw,value=${{ needs.create-release.outputs.image_version }}
 
       - name: Build and push
         uses: docker/build-push-action@v6
