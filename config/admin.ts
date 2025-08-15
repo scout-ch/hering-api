@@ -4,6 +4,9 @@ export default ({ env }) => ({
     },
     apiToken: {
         salt: env('STRAPI_API_TOKEN_SALT'),
+        secrets: {
+            encryptionKey: env('STRAPI_API_SECRET_ENCRYPTION_KEY')
+        }
     },
     transfer: {
         token: {

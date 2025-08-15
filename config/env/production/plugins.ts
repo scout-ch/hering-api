@@ -1,4 +1,12 @@
 export default ({ env }) => ({
+    'users-permissions': {
+        config: {
+            jwtSecret: env('STRAPI_JWT_SECRET'),
+            jwt: {
+                expiresIn: '7d',
+            },
+        }
+    },
     upload: {
         config: {
             provider: 'aws-s3',
