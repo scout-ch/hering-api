@@ -1,82 +1,30 @@
-# Headless CMS for the Hering App
+# Headless CMS for the Hering Frontend
 
-done with strapi: https://strapi.io/
+The CMS / API is built with [Strapi](https://strapi.io/) and is used by the [Hering frontend](https://hering.scout.ch).  
 
 ## Available Scripts
+Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
 
-to start it locally:
+### `develop`
 
-`yarn develop`
-
-## Endpoints
-
-### single
-
-- calendar-page
-- start-page
-- impressum-page
-
-### multi
-
-**Sections**
-=> auto generate slugs
-  
-- title: string
-- content: markdown
-- slug: string
-- sorting: number
-- icon: image
-- menu_name: string
-
-relations:
-- chapters: relation to Chapter
-
-**Chapters**
-
-  => auto generate slugs
-  
-- title: string
-- content: markdown
-- responsible: Rolle[] (one of: AL, LL, C)
-- slug: string
-- sorting: number
-- icon: image
-- menu_name: string
-
-relations:
-- section
-- tasks
-- link
-
-**Tasks**:
-- title: string
-- days: number (amount of days from the camp -/+) (-1000 means the beginning of the year)
-- responsible: Rolle[] (one of: AL, LL, C)
-- targets: string[] (the person/institution that receives the task)
-- slug: string
-
-relations:
-- chapters: relation to Chapter
-
-**Links**
-- title: string
-- link: url
-- key: string
-
-relations:
-- chapters: relation to Chapter
-
-## heroku
-
-available on heroku: https://hering-api.herokuapp.com/admin/
-
-deploy to heroku:
-
-`git push heroku main`
-
-db backup
+Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
 
 ```
-heroku pg:backups:capture -a hering-api
-heroku pg:backups:download -a hering-api
+npm run develop
+```
+
+### `start`
+
+Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
+
+```
+npm run start
+```
+
+### `build`
+
+Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
+
+```
+npm run build
 ```

@@ -1,0 +1,15 @@
+/**
+ * section router
+ */
+
+import { factories } from '@strapi/strapi';
+
+export default factories.createCoreRouter('api::section.section', {
+    config: {
+        find: {
+            middlewares: [
+                'api::section.set-links'
+            ]
+        },
+    }
+});

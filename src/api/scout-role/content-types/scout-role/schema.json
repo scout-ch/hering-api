@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "scout_roles",
+  "info": {
+    "singularName": "scout-role",
+    "pluralName": "scout-roles",
+    "displayName": "Role"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "abbreviation": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,54 @@
+name: Build and push Docker image
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-and-push:
+    # Prevent accidental runs on main. TODO: Remove when ready for production.
+    if: ${{ github.ref != 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Show selected ref
+        run: |
+          echo "Ref:  $GITHUB_REF"
+          echo "SHA:  $GITHUB_SHA"
+          echo "Repo: $GITHUB_REPOSITORY"
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=raw,value=2.0.0-beta-${{ github.run_number }}
+            type=raw,value=${{ github.ref_name }}        # branch
+            type=sha,format=long                         # sha-<commit>
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: false # TODO: Set to true or configure for release
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
