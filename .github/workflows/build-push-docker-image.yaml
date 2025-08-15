@@ -12,7 +12,8 @@ jobs:
     name: Create Release
     runs-on: ubuntu-latest
     outputs:
-      image_version: ${{ steps.docker_image_version.outputs.version }}
+      image_version_full: ${{ steps.docker_image_version.outputs.fullVersion }}
+      image_version_major: ${{ steps.docker_image_version.outputs.majorVersion }}
 
     steps:
       - name: Checkout Code
@@ -28,11 +29,14 @@ jobs:
       - name: Create Docker image version
         id: docker_image_version
         run: |
-          v="${{ steps.semver.outputs.nextStrict }}"
+          fullVersion="${{ steps.semver.outputs.nextStrict }}"
+          majorVersion="${{ steps.semver.outputs.nextMajorStrict }}"
           if [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            echo "version=$v" >> "$GITHUB_OUTPUT"
+            echo "fullVersion=$fullVersion" >> "$GITHUB_OUTPUT"
+            echo "majorVersion=$majorVersion" >> "$GITHUB_OUTPUT"
           else
-            echo "version=${v}-beta" >> "$GITHUB_OUTPUT"
+            echo "fullVersion=${fullVersion}-beta" >> "$GITHUB_OUTPUT"
+            echo "majorVersion=${majorVersion}-beta" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Create tag
@@ -105,7 +109,8 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}
           tags: |
-            type=raw,value=${{ needs.create-release.outputs.image_version }}
+            type=raw,value=${{ needs.create-release.outputs.image_version_full }}
+            type=raw,value=${{ needs.create-release.outputs.image_version_major }}
 
       - name: Build and push
         uses: docker/build-push-action@v6
