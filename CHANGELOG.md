@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.3] - 2025-08-25
+### :recycle: Refactors
+- [`d424994`](https://github.com/scout-ch/hering-api/commit/d42499449422e2092b47257130ccc5822f308a94) - made chapter and publicUrl in link conditional *(commit by [@mario-zelger](https://github.com/mario-zelger))*
+
+
 ## [v2.0.2] - 2025-08-20
 ### :wrench: Chores
 - [`2c2a866`](https://github.com/scout-ch/hering-api/commit/2c2a8661a5f3cddde68bf3265eed518859937bb7) - **deps**: Strapi update *(commit by [@mario-zelger](https://github.com/mario-zelger))*
@@ -15,3 +20,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [v2.0.1]: https://github.com/scout-ch/hering-api/compare/v2.0.0...v2.0.1
 [v2.0.2]: https://github.com/scout-ch/hering-api/compare/v2.0.1...v2.0.2
+[v2.0.3]: https://github.com/scout-ch/hering-api/compare/v2.0.2...v2.0.3
