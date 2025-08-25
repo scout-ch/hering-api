@@ -18,12 +18,12 @@
   "attributes": {
     "title": {
       "type": "string",
-      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": true
     },
     "key": {
       "type": "uid",
@@ -31,19 +31,39 @@
     },
     "isPublic": {
       "type": "boolean",
-      "default": false,
-      "required": true
+      "required": true,
+      "default": false
     },
     "chapter": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::chapter.chapter"
+      "target": "api::chapter.chapter",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "isPublic"
+            },
+            false
+          ]
+        }
+      }
     },
     "publicUrl": {
       "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
+        }
+      },
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "isPublic"
+            },
+            true
+          ]
         }
       }
     }
