@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.5] - 2025-10-05
+### :bug: Bug Fixes
+- [`1f8b7cb`](https://github.com/scout-ch/hering-api/commit/1f8b7cb65fcce6ca66da807b634db9286e38b5c0) - trust proxy header fields *(commit by [@mario-zelger](https://github.com/mario-zelger))*
+
+
 ## [v2.0.4] - 2025-10-05
 ### :bug: Bug Fixes
 - [`44e7b48`](https://github.com/scout-ch/hering-api/commit/44e7b487d24a782da05af04d3e7e206e6aa621b3) - **deps**: strapi update *(commit by [@mario-zelger](https://github.com/mario-zelger))*
@@ -35,3 +40,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v2.0.2]: https://github.com/scout-ch/hering-api/compare/v2.0.1...v2.0.2
 [v2.0.3]: https://github.com/scout-ch/hering-api/compare/v2.0.2...v2.0.3
 [v2.0.4]: https://github.com/scout-ch/hering-api/compare/v2.0.3...v2.0.4
+[v2.0.5]: https://github.com/scout-ch/hering-api/compare/v2.0.4...v2.0.5
