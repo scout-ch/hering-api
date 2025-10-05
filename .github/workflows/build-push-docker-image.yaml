@@ -2,18 +2,30 @@ name: Build and push Docker image
 
 on:
   workflow_dispatch:
+    inputs:
+      is-prerelease:
+        description: 'Mark this as a prerelease'
+        required: true
+        type: boolean
+        default: false
+      create-release:
+        description: 'Create a release and push Docker image'
+        required: true
+        type: boolean
+        default: true
 
 permissions:
   contents: write
   packages: write
 
 jobs:
-  create-release:
-    name: Create Release
+  get-versions:
+    name: Get SemVer
     runs-on: ubuntu-latest
     outputs:
-      image_version_full: ${{ steps.docker_image_version.outputs.fullVersion }}
-      image_version_major: ${{ steps.docker_image_version.outputs.majorVersion }}
+      imageVersionFull: ${{ steps.docker-image-version.outputs.fullVersion }}
+      imageVersionMajor: ${{ steps.docker-image-version.outputs.majorVersion }}
+      semverNext: ${{ steps.semver-info.outputs.nextVersion }}
 
     steps:
       - name: Checkout Code
@@ -25,14 +37,30 @@ jobs:
         with:
           token: ${{ github.token }}
           branch: ${{ github.ref_name }}
-          patchList: 'fix, bugfix, perf, refactor, test, tests, chore'
+
+      - name: Output SemVer
+        id: semver-info
+        run: |
+          nextVersion="${{ steps.semver.outputs.next }}"
+          echo "Current version: ${{ steps.semver.outputs.current }}"
+          echo "Next version: ${{ steps.semver.outputs.next }}"
+          echo "Next strict version: ${{ steps.semver.outputs.nextStrict }}"
+          echo "Next major version: ${{ steps.semver.outputs.nextMajor }}"
+          echo "Next major strict version: ${{ steps.semver.outputs.nextMajorStrict }}"
+          echo "Bump: ${{ steps.semver.outputs.bump }}"
+          echo "Is prerelease: ${{ inputs.is-prerelease }}"
+          if [ "${{ inputs.is-prerelease }}" = "false" ]; then
+            echo "nextVersion=$nextVersion" >> "$GITHUB_OUTPUT"
+          else
+            echo "nextVersion=${nextVersion}-beta" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Create Docker image version
-        id: docker_image_version
+        id: docker-image-version
         run: |
           fullVersion="${{ steps.semver.outputs.nextStrict }}"
           majorVersion="${{ steps.semver.outputs.nextMajorStrict }}"
-          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+          if [ "${{ inputs.is-prerelease }}" = "false" ]; then
             echo "fullVersion=$fullVersion" >> "$GITHUB_OUTPUT"
             echo "majorVersion=$majorVersion" >> "$GITHUB_OUTPUT"
           else
@@ -40,47 +68,9 @@ jobs:
             echo "majorVersion=${majorVersion}-beta" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Create tag
-        uses: actions/github-script@v8
-        with:
-          script: |
-            github.rest.git.createRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: 'refs/tags/${{ steps.semver.outputs.next }}',
-              sha: context.sha
-            })
-
-      - name: Update CHANGELOG
-        id: changelog
-        uses: requarks/changelog-action@v1
-        if: ${{ github.ref == 'refs/heads/main' }}
-        with:
-          token: ${{ github.token }}
-          tag: ${{ steps.semver.outputs.next }}
-
-      - name: Commit CHANGELOG.md
-        uses: stefanzweifel/git-auto-commit-action@v6
-        if: ${{ github.ref == 'refs/heads/main' }}
-        with:
-          branch: ${{ github.ref_name }}
-          commit_message: 'docs: update CHANGELOG.md for ${{ github.ref_name }} [skip ci]'
-          file_pattern: CHANGELOG.md
-
-      - name: Create Release
-        uses: ncipollo/release-action@v1
-        with:
-          draft: ${{ github.ref != 'refs/heads/main' }}
-          makeLatest: ${{ github.ref == 'refs/heads/main' }}
-          name: ${{ steps.semver.outputs.next }}
-          body: ${{ steps.changelog.outputs.changes }}
-          tag: ${{ steps.semver.outputs.next }}
-          commit: ${{ github.sha }}
-          token: ${{ github.token }}
-
   build-and-push:
     runs-on: ubuntu-latest
-    needs: create-release
+    needs: get-versions
 
     steps:
       - name: Show selected ref
@@ -88,6 +78,8 @@ jobs:
           echo "Ref:  $GITHUB_REF"
           echo "SHA:  $GITHUB_SHA"
           echo "Repo: $GITHUB_REPOSITORY"
+          echo "Is prerelease: ${{ inputs.is-prerelease }}"
+          echo "Create release: ${{ inputs.create-release }}"
 
       - name: Checkout
         uses: actions/checkout@v5
@@ -113,8 +105,8 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}
           tags: |
-            type=raw,value=${{ needs.create-release.outputs.image_version_full }}
-            type=raw,value=${{ needs.create-release.outputs.image_version_major }}
+            type=raw,value=${{ needs.get-versions.outputs.imageVersionFull }}
+            type=raw,value=${{ needs.get-versions.outputs.imageVersionMajor }}
 
       - name: Build and push
         uses: docker/build-push-action@v6
@@ -123,6 +115,54 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           platforms: linux/amd64,linux/arm64
-          push: ${{ github.ref == 'refs/heads/main' }} # TODO: Check if this makes sense
+          push: ${{ inputs.create-release }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+
+  create-release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    needs: build-and-push
+    if: ${{ inputs.create-release }}
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v5
+
+      - name: Create tag
+        uses: actions/github-script@v8
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/${{ needs.get-versions.outputs.semverNext }}',
+              sha: context.sha
+            })
+
+      - name: Update CHANGELOG
+        id: changelog
+        uses: requarks/changelog-action@v1
+        with:
+          token: ${{ github.token }}
+          tag: ${{ needs.get-versions.outputs.semverNext }}
+
+      - name: Commit CHANGELOG.md
+        uses: stefanzweifel/git-auto-commit-action@v5
+        if: ${{ !inputs.is-prerelease }}
+        with:
+          branch: ${{ github.ref_name }}
+          commit_message: 'docs: update CHANGELOG.md for ${{ github.ref_name }} [skip ci]'
+          file_pattern: CHANGELOG.md
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          name: ${{ needs.get-versions.outputs.semverNext }}
+          body: ${{ steps.changelog.outputs.changes }}
+          tag: ${{ needs.get-versions.outputs.semverNext }}
+          commit: ${{ github.sha }}
+          prerelease: ${{ inputs.is-prerelease }}
+          makeLatest: ${{ !inputs.is-prerelease }}
+          token: ${{ github.token }}
