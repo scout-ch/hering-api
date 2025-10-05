@@ -5,7 +5,7 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": ["npm"],
+      "matchManagers": ["npm"],
       "enabled": false
     },
     {
