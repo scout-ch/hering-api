@@ -5,10 +5,13 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": [
-        "npm"
-      ],
+      "matchPackageNames": ["npm"],
       "enabled": false
+    },
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "automergeType": "pr"
     }
   ]
 }
