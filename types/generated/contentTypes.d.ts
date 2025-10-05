@@ -516,7 +516,7 @@ export interface ApiChapterChapter extends Struct.CollectionTypeSchema {
       'api::scout-role.scout-role'
     >;
     section: Schema.Attribute.Relation<'manyToOne', 'api::section.section'>;
-    task: Schema.Attribute.Relation<'oneToOne', 'api::task.task'>;
+    tasks: Schema.Attribute.Relation<'oneToMany', 'api::task.task'>;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -765,7 +765,7 @@ export interface ApiTaskTask extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    chapter: Schema.Attribute.Relation<'oneToOne', 'api::chapter.chapter'>;
+    chapter: Schema.Attribute.Relation<'manyToOne', 'api::chapter.chapter'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
