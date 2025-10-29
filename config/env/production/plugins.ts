@@ -1,10 +1,7 @@
 export default ({ env }) => ({
     'users-permissions': {
         config: {
-            jwtSecret: env('STRAPI_JWT_SECRET'),
-            jwt: {
-                expiresIn: '7d',
-            },
+            jwtSecret: env('STRAPI_JWT_SECRET')
         }
     },
     upload: {
