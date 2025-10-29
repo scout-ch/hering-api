@@ -100,6 +100,7 @@ export default factories.createCoreService('api::link.link', ({ strapi }) => ({
                 }
             }
 
+            strapi.log.warn(`[link-service] Could not find link for key ${key}.`);
             return `[${desc}](#invalid-link)`;
         });
     },
