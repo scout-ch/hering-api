@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.7] - 2025-10-30
+### :bug: Bug Fixes
+- [`b26f135`](https://github.com/scout-ch/hering-api/commit/b26f13567ce1361dbc65ee2bb660f8f2f50323a1) - removed deprecated jwt session config *(commit by [@mario-zelger](https://github.com/mario-zelger))*
+- [`8c5488d`](https://github.com/scout-ch/hering-api/commit/8c5488dffb062cec9cbc7dab51e719a3db677108) - added missing Strapi url config *(commit by [@mario-zelger](https://github.com/mario-zelger))*
+- [`fdb4bf6`](https://github.com/scout-ch/hering-api/commit/fdb4bf6736f4b5c3ea33913d1064e4d546626131) - **deps**: updated Strapi to 5.29.0 *(commit by [@mario-zelger](https://github.com/mario-zelger))*
+- [`f419041`](https://github.com/scout-ch/hering-api/commit/f419041c16c54616e9feb255761eca033f3c8a51) - log warning if link cannot be found *(commit by [@mario-zelger](https://github.com/mario-zelger))*
+- [`49e1861`](https://github.com/scout-ch/hering-api/commit/49e18612985854d933784ab965aaadbe06902589) - **deps**: npm packages updates *(commit by [@mario-zelger](https://github.com/mario-zelger))*
+
+
 ## [v2.0.6] - 2025-10-05
 ### :bug: Bug Fixes
 - [`113448b`](https://github.com/scout-ch/hering-api/commit/113448be994a111df08e8f321c7fa9bb73f71c93) - use one to many relationship between tasks and chapters *(commit by [@mario-zelger](https://github.com/mario-zelger))*
@@ -47,3 +56,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v2.0.4]: https://github.com/scout-ch/hering-api/compare/v2.0.3...v2.0.4
 [v2.0.5]: https://github.com/scout-ch/hering-api/compare/v2.0.4...v2.0.5
 [v2.0.6]: https://github.com/scout-ch/hering-api/compare/v2.0.5...v2.0.6
+[v2.0.7]: https://github.com/scout-ch/hering-api/compare/v2.0.6...v2.0.7
