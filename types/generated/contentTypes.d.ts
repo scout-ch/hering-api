@@ -573,7 +573,7 @@ export interface ApiLinkLink extends Struct.CollectionTypeSchema {
   collectionName: 'links';
   info: {
     description: '';
-    displayName: 'Links';
+    displayName: 'Link';
     pluralName: 'links';
     singularName: 'link';
   };
