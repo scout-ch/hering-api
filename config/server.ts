@@ -7,5 +7,10 @@ export default ({ env }) => ({
     },
     proxy: {
         koa: true
+    },
+    logger: {
+        config: {
+            level: env('STRAPI_LOG_LEVEL', 'warn')
+        }
     }
 });
