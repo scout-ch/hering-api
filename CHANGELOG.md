@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.1.0] - 2025-11-09
+### :sparkles: New Features
+- [`ca530e7`](https://github.com/scout-ch/hering-api/commit/ca530e79648f2bcfc211a071b524e7ae1e5cc373) - added collection type for pages *(commit by [@mario-zelger](https://github.com/mario-zelger))*
+
+### :bug: Bug Fixes
+- [`80f601b`](https://github.com/scout-ch/hering-api/commit/80f601be8ace4f16b903a8bbe509717259ceb5be) - **deps**: updated Strapi to 5.30.0 *(commit by [@mario-zelger](https://github.com/mario-zelger))*
+- [`a69a50f`](https://github.com/scout-ch/hering-api/commit/a69a50fec2a2969db5cb7058047eadb420f12cd6) - renamed Links to Link for consistency *(commit by [@mario-zelger](https://github.com/mario-zelger))*
+- [`d5b6213`](https://github.com/scout-ch/hering-api/commit/d5b6213b3c5a98a10cc0fa90739c0d28ef78ed67) - **deps**: updated Strapi to 5.30.1 *(commit by [@mario-zelger](https://github.com/mario-zelger))*
+- [`0321fe4`](https://github.com/scout-ch/hering-api/commit/0321fe44abc44bf25aaface185f693842b0c0edc) - **deps**: NPM package updates *(commit by [@mario-zelger](https://github.com/mario-zelger))*
+- [`143f4d2`](https://github.com/scout-ch/hering-api/commit/143f4d204c68a7ab420209925d092b2387c621ad) - added missing log level configuration via environment *(commit by [@mario-zelger](https://github.com/mario-zelger))*
+- [`e909638`](https://github.com/scout-ch/hering-api/commit/e9096383f1e2896f96d0823b1d7571d6ffc912e4) - removed unused link title property *(commit by [@mario-zelger](https://github.com/mario-zelger))*
+
+### :recycle: Refactors
+- [`1b83b63`](https://github.com/scout-ch/hering-api/commit/1b83b6399bada5eda2632360a4845dc03b639408) - removed unused single page types *(commit by [@mario-zelger](https://github.com/mario-zelger))*
+
+
 ## [v2.0.7] - 2025-10-30
 ### :bug: Bug Fixes
 - [`b26f135`](https://github.com/scout-ch/hering-api/commit/b26f13567ce1361dbc65ee2bb660f8f2f50323a1) - removed deprecated jwt session config *(commit by [@mario-zelger](https://github.com/mario-zelger))*
@@ -57,3 +73,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v2.0.5]: https://github.com/scout-ch/hering-api/compare/v2.0.4...v2.0.5
 [v2.0.6]: https://github.com/scout-ch/hering-api/compare/v2.0.5...v2.0.6
 [v2.0.7]: https://github.com/scout-ch/hering-api/compare/v2.0.6...v2.0.7
+[v2.1.0]: https://github.com/scout-ch/hering-api/compare/v2.0.7...v2.1.0
