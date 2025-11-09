@@ -12,7 +12,7 @@ function buildKey(key: string, locale: string): string {
 }
 
 const linkDocumentParams: FindMany<'api::link.link'> = {
-    fields: ['id', 'title', 'key', 'isPublic', 'publicUrl', 'locale'],
+    fields: ['id', 'key', 'isPublic', 'publicUrl', 'locale'],
     populate: {
         chapter: {
             fields: ['id'],
