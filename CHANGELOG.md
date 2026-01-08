@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.1.2] - 2026-01-08
+### :bug: Bug Fixes
+- [`761ec5f`](https://github.com/scout-ch/hering-api/commit/761ec5faf19526475125c7abeb56acae5cfbc242) - **deps**: update Strapi and related packages to version 5.33.2 *(commit by [@mario-zelger](https://github.com/mario-zelger))*
+- [`75c4a93`](https://github.com/scout-ch/hering-api/commit/75c4a931fe767fbe4283c302f1195cb5ab93e268) - **deps**: NPM package updates *(commit by [@mario-zelger](https://github.com/mario-zelger))*
+
+### :wrench: Chores
+- [`bfe797e`](https://github.com/scout-ch/hering-api/commit/bfe797eddcbfd9261c205c6a8600161b1f5d5560) - **deps**: update actions/checkout action to v6 *(commit by [@renovate[bot]](https://github.com/apps/renovate))*
+
+
 ## [v2.1.1] - 2025-11-12
 ### :bug: Bug Fixes
 - [`6c4e41e`](https://github.com/scout-ch/hering-api/commit/6c4e41ea86cb1c7ae68a77d4dd0dc4c4b09bc504) - **deps**: update Strapi and related packages to version 5.31.0 *(commit by [@mario-zelger](https://github.com/mario-zelger))*
@@ -85,3 +94,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v2.0.7]: https://github.com/scout-ch/hering-api/compare/v2.0.6...v2.0.7
 [v2.1.0]: https://github.com/scout-ch/hering-api/compare/v2.0.7...v2.1.0
 [v2.1.1]: https://github.com/scout-ch/hering-api/compare/v2.1.0...v2.1.1
+[v2.1.2]: https://github.com/scout-ch/hering-api/compare/v2.1.1...v2.1.2
