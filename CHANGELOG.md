@@ -4,6 +4,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.1.3] - 2026-03-25
+### :bug: Bug Fixes
+- [`7b54a20`](https://github.com/scout-ch/hering-api/commit/7b54a208180b298dc65c4469b8f7a73bba993b43) - **deps**: update dependency pg to v8.20.0 *(commit by [@renovate[bot]](https://github.com/apps/renovate))*
+- [`0c54f9a`](https://github.com/scout-ch/hering-api/commit/0c54f9a390ae5c8f66f555c79c0fe58a7b26741c) - **deps**: update Strapi and related packages to version 5.38.0 *(commit by [@mario-zelger](https://github.com/mario-zelger))*
+- [`9b45f65`](https://github.com/scout-ch/hering-api/commit/9b45f65df6f9f30e5a1de5c6743ecc2cd9591da5) - **deps**: update Strapi and related packages to version 5.38.0 *(commit by [@mario-zelger](https://github.com/mario-zelger))*
+- [`da3a4a0`](https://github.com/scout-ch/hering-api/commit/da3a4a02d60a6a744533c8eb6829b8d747e8e5ec) - **deps**: update dependency pg to v8.20.0 *(commit by [@renovate[bot]](https://github.com/apps/renovate))*
+- [`a467303`](https://github.com/scout-ch/hering-api/commit/a4673035e79fd56e1b735990653228df9d8f20ad) - **deps**: update Strapi and related packages to version 5.40.0 *(commit by [@mario-zelger](https://github.com/mario-zelger))*
+- [`0cf7f26`](https://github.com/scout-ch/hering-api/commit/0cf7f26d63d141888aeba3bce556d54be7dce6ea) - update upload file plugin schema *(commit by [@mario-zelger](https://github.com/mario-zelger))*
+
+### :wrench: Chores
+- [`32d5682`](https://github.com/scout-ch/hering-api/commit/32d56823472355ec5819df0b2f2a34b7c284dc88) - **deps**: update dependency better-sqlite3 to v12.6.2 *(commit by [@renovate[bot]](https://github.com/apps/renovate))*
+- [`9e22a11`](https://github.com/scout-ch/hering-api/commit/9e22a1134e19ce4d370980264132924662086766) - **deps**: update dependency @types/node to v24.11.0 *(commit by [@renovate[bot]](https://github.com/apps/renovate))*
+- [`3b7589d`](https://github.com/scout-ch/hering-api/commit/3b7589d45197b071778c85c9e986270fd15153a5) - **deps**: update docker/setup-qemu-action action to v4 *(commit by [@renovate[bot]](https://github.com/apps/renovate))*
+- [`227995d`](https://github.com/scout-ch/hering-api/commit/227995d2e30bb2dcaa125e0d36a52003f02b94c7) - **deps**: update docker/login-action action to v4 *(commit by [@renovate[bot]](https://github.com/apps/renovate))*
+- [`cd493ae`](https://github.com/scout-ch/hering-api/commit/cd493ae6dedea250e14f0668ab27bcb4e3059fac) - **deps**: update docker/setup-buildx-action action to v4 *(commit by [@renovate[bot]](https://github.com/apps/renovate))*
+- [`2d72e6b`](https://github.com/scout-ch/hering-api/commit/2d72e6b388e161a62b139a316c8a7e31c8cf51e7) - **deps**: update docker/metadata-action action to v6 *(commit by [@renovate[bot]](https://github.com/apps/renovate))*
+- [`a5549f4`](https://github.com/scout-ch/hering-api/commit/a5549f4b65c13b7f6baa386648a89300ad1ca715) - **deps**: update dependency @types/react to v18.3.28 *(commit by [@renovate[bot]](https://github.com/apps/renovate))*
+- [`433ecb4`](https://github.com/scout-ch/hering-api/commit/433ecb4d8f120bb16eca703ff9b4d85c1763a1b2) - **deps**: update dependency styled-components to v6.3.11 *(commit by [@renovate[bot]](https://github.com/apps/renovate))*
+- [`9f38fea`](https://github.com/scout-ch/hering-api/commit/9f38feaf676ffdc63fc2be173124e4b98ead8476) - **deps**: update docker/build-push-action action to v7 *(commit by [@renovate[bot]](https://github.com/apps/renovate))*
+- [`d1eee6d`](https://github.com/scout-ch/hering-api/commit/d1eee6d353c13ad00cf470172bec1b4748dc63c2) - **deps**: update dependency @types/node to v24.12.0 *(commit by [@renovate[bot]](https://github.com/apps/renovate))*
+- [`62cd078`](https://github.com/scout-ch/hering-api/commit/62cd078cdc7e43aa1a9bf60acf1ecc4c473c81e9) - **deps**: update dependency better-sqlite3 to v12.8.0 *(commit by [@renovate[bot]](https://github.com/apps/renovate))*
+- [`c00e521`](https://github.com/scout-ch/hering-api/commit/c00e5214cfad030d1db9f60d2e343e35babfe7a8) - **deps**: update dependency styled-components to v6.3.12 *(commit by [@renovate[bot]](https://github.com/apps/renovate))*
+
+
 ## [v2.1.2] - 2026-01-08
 ### :bug: Bug Fixes
 - [`761ec5f`](https://github.com/scout-ch/hering-api/commit/761ec5faf19526475125c7abeb56acae5cfbc242) - **deps**: update Strapi and related packages to version 5.33.2 *(commit by [@mario-zelger](https://github.com/mario-zelger))*
@@ -95,3 +119,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v2.1.0]: https://github.com/scout-ch/hering-api/compare/v2.0.7...v2.1.0
 [v2.1.1]: https://github.com/scout-ch/hering-api/compare/v2.1.0...v2.1.1
 [v2.1.2]: https://github.com/scout-ch/hering-api/compare/v2.1.1...v2.1.2
+[v2.1.3]: https://github.com/scout-ch/hering-api/compare/v2.1.2...v2.1.3
