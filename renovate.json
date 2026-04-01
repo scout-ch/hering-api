@@ -16,7 +16,8 @@
         "patch"
       ],
       "automerge": true,
-      "automergeType": "pr"
+      "automergeType": "pr",
+      "minimumReleaseAge": "7 days"
     }
   ]
 }
