@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.1.4] - 2026-05-09
+### :bug: Bug Fixes
+- [`6d26c96`](https://github.com/scout-ch/hering-api/commit/6d26c96c4d34d5ced5a66cc61f6738f40f84469e) - **deps**: update Strapi and related packages to version 5.43.0 *(commit by [@mario-zelger](https://github.com/mario-zelger))*
+
+### :wrench: Chores
+- [`c5440d6`](https://github.com/scout-ch/hering-api/commit/c5440d6bd19243a20c0d4d25b1a8f729c01535bc) - **deps**: update dependency @types/node to v24.12.2 *(commit by [@renovate[bot]](https://github.com/apps/renovate))*
+- [`b324a5b`](https://github.com/scout-ch/hering-api/commit/b324a5b1a08b323b09cb4a934938eae87abeebbf) - **deps**: update dependency better-sqlite3 to v12.9.0 *(commit by [@renovate[bot]](https://github.com/apps/renovate))*
+- [`17edd9a`](https://github.com/scout-ch/hering-api/commit/17edd9a797e9da78095b203d05a7a06148b73557) - **deps**: update dependency styled-components to v6.4.1 *(commit by [@renovate[bot]](https://github.com/apps/renovate))*
+- [`4b76d36`](https://github.com/scout-ch/hering-api/commit/4b76d36f0cd529baad8e1a66bec1c2c8b761584d) - **deps**: update actions/github-script action to v9 *(commit by [@renovate[bot]](https://github.com/apps/renovate))*
+
+
 ## [v2.1.3] - 2026-03-25
 ### :bug: Bug Fixes
 - [`7b54a20`](https://github.com/scout-ch/hering-api/commit/7b54a208180b298dc65c4469b8f7a73bba993b43) - **deps**: update dependency pg to v8.20.0 *(commit by [@renovate[bot]](https://github.com/apps/renovate))*
@@ -120,3 +131,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v2.1.1]: https://github.com/scout-ch/hering-api/compare/v2.1.0...v2.1.1
 [v2.1.2]: https://github.com/scout-ch/hering-api/compare/v2.1.1...v2.1.2
 [v2.1.3]: https://github.com/scout-ch/hering-api/compare/v2.1.2...v2.1.3
+[v2.1.4]: https://github.com/scout-ch/hering-api/compare/v2.1.3...v2.1.4
