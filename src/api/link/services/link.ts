@@ -7,6 +7,8 @@ import { FindMany } from "@strapi/types/dist/modules/documents/params/document-e
 
 const markdownLinkLookup: RegExp = /\[(?<desc>.*?)]\(\$(?<key>[\w-]+)\$\)/g;
 
+const cache = new Map<string, any>();
+
 function buildKey(key: string, locale: string): string {
     return `${key}--${locale}`;
 }
@@ -27,8 +29,6 @@ const linkDocumentParams: FindMany<'api::link.link'> = {
 }
 
 export default factories.createCoreService('api::link.link', ({ strapi }) => ({
-    cache: new Map<string, any>(),
-
     async initCache() {
         try {
 
@@ -44,14 +44,14 @@ export default factories.createCoreService('api::link.link', ({ strapi }) => ({
                 entries.push(...localizedEntries);
             }
 
-            this.cache.clear();
+            cache.clear();
             entries.forEach((entry) => {
                 if (entry.key) {
-                    this.cache.set(buildKey(entry.key, entry.locale), entry);
+                    cache.set(buildKey(entry.key, entry.locale), entry);
                 }
             });
 
-            strapi.log.info(`[link-cache] Loaded ${this.cache.size} entries into the cache.`);
+            strapi.log.info(`[link-cache] Loaded ${cache.size} entries into the cache.`);
         } catch (error) {
             strapi.log.error('[link-cache] Error loading cache:', error);
         }
@@ -64,11 +64,11 @@ export default factories.createCoreService('api::link.link', ({ strapi }) => ({
             ...linkDocumentParams
         });
 
-        this.cache.set(buildKey(link.key, link.locale), link);
+        cache.set(buildKey(link.key, link.locale), link);
     },
 
     removeCache(entry: any) {
-        this.cache.delete(buildKey(entry.key, entry.locale));
+        cache.delete(buildKey(entry.key, entry.locale));
     },
 
     async replaceKeysWithUrls(content: string, locale: string): Promise<string> {
@@ -110,7 +110,7 @@ export default factories.createCoreService('api::link.link', ({ strapi }) => ({
         const keysToFetch = new Set<string>();
 
         for (const key of keys) {
-            const cachedLink = this.cache.get(buildKey(key, locale));
+            const cachedLink = cache.get(buildKey(key, locale));
 
             // Entries that are not stored in the cache are undefined.
             // Entries that do not exist in the database but in the cache are null.
@@ -135,11 +135,11 @@ export default factories.createCoreService('api::link.link', ({ strapi }) => ({
             for (const keyToFetch of keysToFetch) {
                 const link = linkResponse.find(r => r.key === keyToFetch);
                 if (link) {
-                    this.cache.set(buildKey(link.key, locale), link);
+                    cache.set(buildKey(link.key, locale), link);
                 } else {
                     // Store null for keys that do not exist in the database
                     // so we don't have to query them again.
-                    this.cache.set(buildKey(keyToFetch, locale), null);
+                    cache.set(buildKey(keyToFetch, locale), null);
                 }
             }
         }
